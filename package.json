@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "nodemon src/server.js --watch"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.9"
+  }
+}
