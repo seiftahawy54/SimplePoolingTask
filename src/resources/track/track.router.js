@@ -7,7 +7,7 @@ router.route("/").get(controllers.getMany);
 
 router
   .route("/:id")
-  .post(controllers.addOne)
+  .post(controllers.createOne)
   .get(controllers.getOne)
   .delete(controllers.removeOne)
   .put(controllers.updateOne);

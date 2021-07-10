@@ -4,7 +4,7 @@ const getMany = model => async (req, res) => {
 const getOne = model => async (req, res) => {
   res.send("you've got one item");
 };
-const addOne = model => async (req, res) => {
+const createOne = model => async (req, res) => {
   res.send("you've added one item");
 };
 const removeOne = model => async (req, res) => {
