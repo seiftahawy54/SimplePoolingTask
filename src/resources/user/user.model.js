@@ -3,16 +3,8 @@ const utils = require("../utils/utils");
 
 const selectAllUsers = () => {
   const query = "SELECT * FROM users;";
-  // const rows = utils.queryRunner(query);
-
-  db.all(query, [], (err, rows) => {
-    if (err) {
-      throw err;
-    }
-    rows.forEach(row => {
-      console.log(row);
-    });
-  });
+  const data = utils.runQueryAll(query);
+  console.log(data);
 };
 
 selectAllUsers();
@@ -27,7 +19,7 @@ const createUser = (name, email, password, gender, hascar) => {
   utils.queryRunner(query);
 };
 
-// createUser("Seif", "Seiff", 123456, "male", true);
+// createUser("Seif", "seif@seif", 123456, "male", true);
 
 const updateUser = (id, name, email, password, hascar) => {
   const query = `UPDATE users SET (name = ${name}, email = ${email}, password = ${password}, hascar = ${hascar}) WHERE id = ${id};`;

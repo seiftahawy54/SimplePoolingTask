@@ -1,12 +1,14 @@
 const db = require("./db");
 
-const runQueryAll = sqlQuery => {
-  db.all(sqlQuery, (err, rows) => {
+const runQueryAll = query => {
+  db.all(query, [], (err, rows) => {
     if (err) {
-      console.log(err.message);
-    } else {
-      return rows;
+      throw err;
     }
+
+    rows.forEach(row => {
+      return row;
+    });
   });
 };
 
