@@ -1,5 +1,5 @@
 const Router = require("express");
-const controllers = require("./track.controller");
+const controllers = require("./tripes.controller");
 
 const router = Router();
 

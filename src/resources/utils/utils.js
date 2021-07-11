@@ -1,23 +1,37 @@
-const getMany = model => async (req, res) => {
-  res.send("You've got many items");
-};
-const getOne = model => async (req, res) => {
-  res.send("you've got one item");
-};
-const createOne = model => async (req, res) => {
-  res.send("you've added one item");
-};
-const removeOne = model => async (req, res) => {
-  res.send("you've deleted one");
-};
-const updateOne = model => async (req, res) => {
-  res.send("you've updated one");
+const db = require("./db");
+
+const runQueryAll = sqlQuery => {
+  db.all(sqlQuery, (err, rows) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      return rows;
+    }
+  });
 };
 
-module.exports = model => ({
-  removeOne: removeOne(model),
-  updateOne: updateOne(model),
-  getMany: getMany(model),
-  getOne: getOne(model),
-  createOne: createOne(model),
-});
+const runQueryEach = sqlQuery => {
+  db.each(sqlQuery, (err, row) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      return rows;
+    }
+  });
+};
+
+const runQueryGet = sqlQuery => {
+  db.get(sqlQuery, (err, row) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      return rows;
+    }
+  });
+};
+
+module.exports = {
+  runQueryAll,
+  runQueryEach,
+  runQueryGet,
+};
