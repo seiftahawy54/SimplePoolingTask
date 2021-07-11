@@ -5,5 +5,8 @@ src/resources/utils/config.js
 
 .yarn/*
 
+app.db
+app.sql
+
 .yarn
 *workspace*

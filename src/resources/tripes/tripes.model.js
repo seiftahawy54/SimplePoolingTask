@@ -1,16 +1,37 @@
-const selectAllTripes = () => "SELECT * FROM tripes;";
+const db = require("../utils/db");
+// const queries = require("../utils/utils");
+
+const selectAllTripes = () => {
+  const query = "SELECT * FROM trips;";
+  db.run(query, (res, err) => {
+    if (err) return console.error(err);
+    return console.log(data);
+  });
+};
+
+// selectAllTripes();
 
 const getOneTrip = (tripId, column) =>
-  `SELECT ${column} FROM tripes WHERE id = ${id}`;
+  `SELECT ${column} FROM trips WHERE id = ${id}`;
 
 const updateTrip = (tripId, userId, sLongitude, eLongitude, sTime, count) =>
-  `UPDATE tripes SET (sLongitude = ${sLongitude}, eLongitude = ${eLongitude}, sTime = ${sTime}, count = ${count}) WHERE tripId = ${tripId} AND userId = ${userId};`;
+  `UPDATE trips SET (sLongitude = ${sLongitude}, eLongitude = ${eLongitude}, sTime = ${sTime}, count = ${count}) WHERE tripId = ${tripId} AND userId = ${userId};`;
 
-const createTrip = (userId, sLongitude, eLongitude, sTime, count) =>
-  `INSERT INTO tripes (${userId}, ${sLongitude}, ${eLongitude}, ${sTime}, ${count});`;
+// updateTrip(5, 9, 123, 456, 900, 1);
+
+const createTrip = (userId, sLongitude, eLongitude, sTime, count) => {
+  const query = `INSERT INTO trips (${userId}, ${sLongitude}, ${eLongitude}, ${sTime}, ${count});`;
+
+  db.run(query, (res, err) => {
+    if (err) return console.error(err.message);
+    else return console.log(res);
+  });
+};
+
+createTrip(9, 123, 456, 900, 1);
 
 const deleteTrip = (tripId, userId) =>
-  `DELETE FROM tripes WHERE tripId = ${tripId} AND ${userId}`;
+  `DELETE FROM trips WHERE tripId = ${tripId} AND ${userId}`;
 
 module.exports = {
   selectAllTripes,

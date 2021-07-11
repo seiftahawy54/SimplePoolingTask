@@ -30,8 +30,19 @@ const runQueryGet = sqlQuery => {
   });
 };
 
+const runQueryCreate = sqlQuery => {
+  db.run(sqlQuery, (err, row) => {
+    if (err) {
+      console.log(err.message);
+    } else {
+      return true;
+    }
+  });
+};
+
 module.exports = {
   runQueryAll,
   runQueryEach,
   runQueryGet,
+  runQueryCreate,
 };
