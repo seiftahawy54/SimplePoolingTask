@@ -3,7 +3,16 @@ const utils = require("../utils/utils");
 
 const selectAllUsers = () => {
   const query = "SELECT * FROM users;";
-  console.table(utils.runQueryAll(query));
+  // const rows = utils.queryRunner(query);
+
+  db.all(query, [], (err, rows) => {
+    if (err) {
+      throw err;
+    }
+    rows.forEach(row => {
+      console.log(row);
+    });
+  });
 };
 
 selectAllUsers();

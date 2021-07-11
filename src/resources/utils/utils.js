@@ -44,7 +44,7 @@ const runQueryCreate = sqlQuery => {
 */
 
 const queryRunner = query => {
-  db.run(query, (res, err) => {
+  db.run(query, (err, res) => {
     if (err) return console.error(err.message);
     else return console.log(res);
   });
