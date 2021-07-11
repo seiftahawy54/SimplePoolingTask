@@ -10,8 +10,9 @@ const runQueryAll = sqlQuery => {
   });
 };
 
+/*
 const runQueryEach = sqlQuery => {
-  db.each(sqlQuery, (err, row) => {
+  db.each(sqlQuery, (rows, err) => {
     if (err) {
       console.log(err.message);
     } else {
@@ -19,7 +20,8 @@ const runQueryEach = sqlQuery => {
     }
   });
 };
-
+*/
+/*
 const runQueryGet = sqlQuery => {
   db.get(sqlQuery, (err, row) => {
     if (err) {
@@ -39,10 +41,19 @@ const runQueryCreate = sqlQuery => {
     }
   });
 };
+*/
+
+const queryRunner = query => {
+  db.run(query, (res, err) => {
+    if (err) return console.error(err.message);
+    else return console.log(res);
+  });
+};
 
 module.exports = {
   runQueryAll,
-  runQueryEach,
-  runQueryGet,
-  runQueryCreate,
+  // runQueryEach,
+  // runQueryGet,
+  // runQueryCreate,
+  queryRunner,
 };

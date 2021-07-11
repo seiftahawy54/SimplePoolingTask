@@ -28,8 +28,6 @@ const createTrip = (userId, sLongitude, eLongitude, sTime, count) => {
   });
 };
 
-createTrip(9, 123, 456, 900, 1);
-
 const deleteTrip = (tripId, userId) =>
   `DELETE FROM trips WHERE tripId = ${tripId} AND ${userId}`;
 
