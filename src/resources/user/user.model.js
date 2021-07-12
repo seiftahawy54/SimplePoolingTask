@@ -1,40 +1,40 @@
 const db = require("../utils/db");
 const utils = require("../utils/utils");
 
-const selectAllUsers = () => {
+const getMany = async () => {
   const query = "SELECT * FROM users;";
-  const data = utils.runQueryAll(query);
-  console.log(data);
+
+  await utils.runQueryAll(query);
 };
 
-selectAllUsers();
+getMany();
 
-const getOneUser = (id, column) => {
+const getOne = async (id, column) => {
   const query = `SELECT ${column} FROM users WHERE id = ${id};`;
-  utils.queryRunner(query);
+
+  return await utils.runQueryEach(query);
 };
 
-const createUser = (name, email, password, gender, hascar) => {
+const createOne = async (name, email, password, gender, hascar) => {
   const query = `INSERT INTO users (username, email, password, gender, hasacar) VALUES ("${name}", "${email}", "${password}", "${gender}", ${hascar});`;
-  utils.queryRunner(query);
+
+  return await utils.runQueryAll(query);
 };
 
-// createUser("Seif", "seif@seif", 123456, "male", true);
-
-const updateUser = (id, name, email, password, hascar) => {
+const updateOne = async (id, name, email, password, hascar) => {
   const query = `UPDATE users SET (name = ${name}, email = ${email}, password = ${password}, hascar = ${hascar}) WHERE id = ${id};`;
-  utils.queryRunner(query);
+  return await utils.runQueryAll(query);
 };
 
-const deleteUser = id => {
+const deleteOne = async id => {
   const query = `DELETE FROM users WHERE id = ${id};`;
-  utils.queryRunner(query);
+  return await utils.runQueryAll(query);
 };
 
 module.exports = {
-  selectAllUsers,
-  getOneUser,
-  createUser,
-  updateUser,
-  deleteUser,
+  getMany,
+  getOne,
+  createOne,
+  updateOne,
+  deleteOne,
 };
